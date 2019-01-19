@@ -82,7 +82,7 @@ console.log(antonietta.gender);
 // console.log(kennan.speak());
 
 kennan.speak = function() {
-  return "Hello, my name is Kennan!";
+  return `Hello, my name is ${this.name}!`;
 };
 
 console.log(kennan.speak());
@@ -109,7 +109,7 @@ const parent = {
   name: "Susan",
   age: 70,
   speak: function() {
-    console.log(`Hi, my name is ${this.name}.`);
+    console.log(`Hello, my name is ${this.name}.`);
   },
   child: {
     name: "George",
@@ -121,7 +121,7 @@ const parent = {
       name: "Sam",
       age: 30,
       speak: function() {
-        console.log(`Hi, my name is ${this.name}.`);
+        console.log(`Howdy, my name is ${this.name}.`);
       }
     }
   }
