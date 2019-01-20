@@ -117,29 +117,29 @@ console.log(
 // The marketing team wants the car models listed alphabetically on the website. Sort all the car model names into alphabetical order and log the results in the console
 
 // With for loop:
-// I came up with the general idea here without a lot of trouble. It was really hard to debug, though. I finally figured out to add a break after an item is added to the carModelsForLoop array. It was a fun puzzle.
-const carModelsForLoop = []; // Changed let to const!
+// I came up with the general idea here without a lot of trouble. It was really hard to debug, though. I finally figured out to add a break after an item is added to the carModelsWithForLoop array. It was a fun puzzle.
+const carModelsWithForLoop = [];
 for (i = 0; i < inventory.length; i++) {
   if (i === 0) {
-    carModelsForLoop.push(inventory[i].car_model);
+    carModelsWithForLoop.push(inventory[i].car_model);
   } else {
-    for (j = 0; j < carModelsForLoop.length; j++) {
+    for (j = 0; j < carModelsWithForLoop.length; j++) {
       if (
-        inventory[i].car_model < carModelsForLoop[j] ||
-        inventory[i].car_model === carModelsForLoop[j]
+        inventory[i].car_model < carModelsWithForLoop[j] ||
+        inventory[i].car_model === carModelsWithForLoop[j]
       ) {
-        carModelsForLoop.splice(j, 0, inventory[i].car_model);
+        carModelsWithForLoop.splice(j, 0, inventory[i].car_model);
         break;
       } else {
-        if (j === carModelsForLoop.length - 1) {
-          carModelsForLoop.push(inventory[i].car_model);
+        if (j === carModelsWithForLoop.length - 1) {
+          carModelsWithForLoop.push(inventory[i].car_model);
           break;
         }
       }
     }
   }
 }
-console.log(carModelsForLoop);
+console.log(carModelsWithForLoop);
 
 // Without for loop:
 // Much easier!
@@ -148,15 +148,50 @@ console.log(carModels);
 
 // ==== Challenge 4 ====
 // The accounting team needs all the years from every car on the lot. Create a new array from the dealer data containing only the car years and log the result in the console.
-let carYears = [];
-console.log();
+
+// With for loop:
+const carYearsWithForLoop = [];
+for (i = 0; i < inventory.length; i++) {
+  carYearsWithForLoop.push(inventory[i].car_year);
+}
+console.log(carYearsWithForLoop);
+
+// Without for loop:
+const carYears = inventory.map(item => item.car_year);
+console.log(carYears);
 
 // ==== Challenge 5 ====
 // The car lot manager needs to find out how many cars are older than the year 2000. Using the carYears array you just created, find out how many cars were made before the year 2000 by populating the array oldCars and logging it's length.
-let oldCars = [];
-console.log();
+
+// With for loop:
+const oldCarsWithForLoop = [];
+for (i = 0; i < carYears.length; i++) {
+  if (carYears[i] < 2000) {
+    oldCarsWithForLoop.push(carYears[i]);
+  }
+}
+console.log(oldCarsWithForLoop.length);
+
+// Without for loop:
+const oldCars = carYears.filter(function(year) {
+  return year < 2000;
+});
+console.log(oldCars.length);
 
 // ==== Challenge 6 ====
 // A buyer is interested in seeing only BMW and Audi cars within the inventory.  Return an array that only contains BMW and Audi cars.  Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
-let BMWAndAudi = [];
-console.log();
+
+// With for loop:
+let BMWAndAudiWithForLoop = [];
+for (i = 0; i < inventory.length; i++) {
+  if (inventory[i].car_make === "BMW" || inventory[i].car_make === "Audi") {
+    BMWAndAudiWithForLoop.push(inventory[i]);
+  }
+}
+console.log(JSON.stringify(BMWAndAudiWithForLoop));
+
+// Without for loop:
+let BMWAndAudi = inventory.filter(function(item) {
+  return item.car_make === "BMW" || item.car_make === "Audi";
+});
+console.log(JSON.stringify(BMWAndAudi));
