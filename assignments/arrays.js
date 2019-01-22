@@ -110,7 +110,7 @@ console.log(`The last car is a ${lastCar.car_make} ${lastCar.car_model}.`);
 console.log(
   `The last car is a ${inventory[inventory.length - 1].car_make} ${
     inventory[inventory.length - 1].car_model
-  }`
+  }.`
 );
 
 // ==== Challenge 3 ====
@@ -173,7 +173,7 @@ for (i = 0; i < carYears.length; i++) {
 console.log(oldCarsWithForLoop.length);
 
 // Without for loop:
-const oldCars = carYears.filter(function(year) {
+const oldCars = carYears.filter(year => {
   return year < 2000;
 });
 console.log(oldCars.length);
@@ -182,7 +182,7 @@ console.log(oldCars.length);
 // A buyer is interested in seeing only BMW and Audi cars within the inventory.  Return an array that only contains BMW and Audi cars.  Once you have populated the BMWAndAudi array, use JSON.stringify() to show the results of the array in the console.
 
 // With for loop:
-let BMWAndAudiWithForLoop = [];
+const BMWAndAudiWithForLoop = [];
 for (i = 0; i < inventory.length; i++) {
   if (inventory[i].car_make === "BMW" || inventory[i].car_make === "Audi") {
     BMWAndAudiWithForLoop.push(inventory[i]);
@@ -191,7 +191,7 @@ for (i = 0; i < inventory.length; i++) {
 console.log(JSON.stringify(BMWAndAudiWithForLoop));
 
 // Without for loop:
-let BMWAndAudi = inventory.filter(function(item) {
+const BMWAndAudi = inventory.filter(item => {
   return item.car_make === "BMW" || item.car_make === "Audi";
 });
 console.log(JSON.stringify(BMWAndAudi));
